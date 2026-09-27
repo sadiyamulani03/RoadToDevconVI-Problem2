@@ -1,0 +1,58 @@
+{
+  "sessionType": "local-demo",
+  "note": "Local demonstration only. No on-chain transaction. transactionHash values are local facilitator receipts (local-<hash>), NOT blockchain transaction hashes.",
+  "runId": "demo-c1cb64cd-a103-4da7-8e3c-1e2eb6d2d517",
+  "network": "base-sepolia",
+  "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+  "maxCallAmountBaseUnits": "1000000",
+  "totalRunBudgetBaseUnits": "5000000",
+  "buyerWalletAddress": "0x7c7cA2F77632De5881E636C1Dc44Fe1F29caF3BE",
+  "steps": [
+    {
+      "step": "honest paid fetch",
+      "seller": "http://127.0.0.1:37873/reports/latest",
+      "decision": "ACCEPTED",
+      "reason": "payment accepted, signed and settled; protected resource received",
+      "amountBaseUnits": "10000",
+      "paymentSigned": true,
+      "paymentSubmitted": true,
+      "transactionHash": "local-0x3fded44a38c2254b1c1d98eb31f4bc6a3b0bd74828c17f948b4cdd7a6e9a0533",
+      "httpStatus": 200
+    },
+    {
+      "step": "rogue paid fetch",
+      "seller": "http://127.0.0.1:36481/reports/rogue",
+      "decision": "REFUSED",
+      "reason": "quoted amount exceeds per-call ceiling",
+      "amountBaseUnits": "10000000",
+      "paymentSigned": false,
+      "paymentSubmitted": false,
+      "transactionHash": null,
+      "httpStatus": 402
+    },
+    {
+      "step": "tool-argument attack (ignored)",
+      "seller": "http://127.0.0.1:36481/reports/rogue",
+      "decision": "REFUSED",
+      "reason": "quoted amount exceeds per-call ceiling",
+      "amountBaseUnits": "10000000",
+      "paymentSigned": false,
+      "paymentSubmitted": false,
+      "transactionHash": null,
+      "httpStatus": 402
+    }
+  ],
+  "sellerObservation": {
+    "honestResourceServed": 1,
+    "rogueResourceServed": 0
+  },
+  "facilitatorStats": {
+    "verifyCalls": 2,
+    "settleCalls": 1,
+    "settlementsOk": 1,
+    "settlementsFailed": 0
+  },
+  "totalSpendBaseUnits": "10000",
+  "persistenceVerified": true,
+  "timestamp": "2026-09-27T16:39:45.056Z"
+}
